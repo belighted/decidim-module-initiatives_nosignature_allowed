@@ -1,0 +1,6 @@
+---
+en:
+  decidim:
+    components:
+      initiatives_nosignature_allowed:
+        name: InitiativesNosignatureAllowed
