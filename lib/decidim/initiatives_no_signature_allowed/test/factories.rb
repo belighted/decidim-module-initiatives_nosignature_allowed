@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "decidim/core/test/factories"
+require "decidim/initiatives/test/factories"
 
 FactoryBot.modify do
   factory :initiatives_type, class: "Decidim::InitiativesType" do

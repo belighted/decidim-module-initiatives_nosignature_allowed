@@ -12,6 +12,8 @@ module Decidim
       let(:scope) { create(:initiatives_type_scope, type: initiatives_type) }
 
       let(:title) { Decidim::Faker::Localized.sentence(5) }
+      let(:no_signature) { nil }
+
       let(:attributes) do
         {
             title: title,
@@ -19,7 +21,7 @@ module Decidim
             type_id: initiatives_type.id,
             scope_id: scope&.scope&.id,
             signature_type: "offline",
-            no_signature: "1"
+            no_signature: no_signature
         }
       end
       let(:context) do
@@ -40,6 +42,12 @@ module Decidim
         let(:title) { nil }
 
         it { is_expected.to be_invalid }
+      end
+
+      context "when no signature" do
+        let(:no_signature) { true }
+
+        it { is_expected.to be_valid }
       end
 
       describe "#signature_type_updatable?" do

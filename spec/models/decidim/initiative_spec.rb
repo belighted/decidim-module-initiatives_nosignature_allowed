@@ -217,8 +217,8 @@ module Decidim
       end
     end
 
-    context "no_signature_allowed" do
-      let(:initiative) { build(:initiative, :no_signature_allowed) }
+    context "when no signature allowed" do
+      let(:initiative) { build(:initiative, :no_signature) }
 
       it { is_expected.to be_valid }
     end

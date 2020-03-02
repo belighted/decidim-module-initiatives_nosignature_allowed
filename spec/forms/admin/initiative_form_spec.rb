@@ -20,29 +20,36 @@ module Decidim
 
         let(:context) do
           {
-            current_user: user,
-            current_organization: organization,
-            current_component: nil,
-            initiative: initiative
+              current_user: user,
+              current_organization: organization,
+              current_component: nil,
+              initiative: initiative
           }
         end
 
         let(:type_id) { initiatives_type.id }
         let(:decidim_scope_id) { scope.scope.id }
+        let(:no_signature) { nil }
 
         let(:attributes) do
           {
-            type_id: type_id,
-            decidim_scope_id: decidim_scope_id,
-            title: Decidim::Faker::Localized.sentence(2),
-            description: Decidim::Faker::Localized.sentence(5),
-            no_signature: "1",
-            state: "created",
-            signature_type: "online"
+              type_id: type_id,
+              decidim_scope_id: decidim_scope_id,
+              title: Decidim::Faker::Localized.sentence(2),
+              description: Decidim::Faker::Localized.sentence(5),
+              state: "created",
+              signature_type: "online",
+              no_signature: no_signature
           }
         end
 
         context "when everything is OK" do
+          it { is_expected.to be_valid }
+        end
+
+        context "when no signature" do
+          let(:no_signature) { true }
+
           it { is_expected.to be_valid }
         end
 
@@ -97,10 +104,10 @@ module Decidim
             context "when no type or decidim_scope_id are provided" do
               let(:attributes) do
                 {
-                  title: Decidim::Faker::Localized.sentence(2),
-                  description: Decidim::Faker::Localized.sentence(5),
-                  state: "created",
-                  signature_type: "online"
+                    title: Decidim::Faker::Localized.sentence(2),
+                    description: Decidim::Faker::Localized.sentence(5),
+                    state: "created",
+                    signature_type: "online"
                 }
               end
 

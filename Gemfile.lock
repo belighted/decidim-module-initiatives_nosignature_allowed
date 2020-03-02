@@ -210,6 +210,7 @@ PATH
   specs:
     decidim-initiatives_no_signature_allowed (0.21.0.pre.dev)
       decidim-core (= 0.21.0.pre.dev)
+      decidim-initiatives (= 0.21.0.pre.dev)
 
 GEM
   remote: https://rubygems.org/
