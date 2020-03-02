@@ -5,6 +5,7 @@ source "https://rubygems.org"
 ruby RUBY_VERSION
 
 gem "decidim", git: "https://github.com/decidim/decidim"
+gem "decidim-initiatives", git: "https://github.com/decidim/decidim"
 gem "decidim-initiatives_no_signature_allowed", path: "."
 
 gem "puma", "~> 3.12.2"
