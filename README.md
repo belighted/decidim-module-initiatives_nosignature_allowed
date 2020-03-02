@@ -1,10 +1,10 @@
-# Decidim::InitiativesNosignatureAllowed
+# Decidim::InitiativesNoSignatureAllowed
 
 Allow a user to create an initiative that do not collect signatures..
 
 ## Usage
 
-InitiativesNosignatureAllowed will be available as a Component for a Participatory
+InitiativesNoSignatureAllowed will be available as a Component for a Participatory
 Space.
 
 ## Installation
@@ -12,7 +12,7 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'decidim-initiatives_nosignature_allowed'
+gem 'decidim-initiatives_no_signature_allowed'
 ```
 
 And then execute:

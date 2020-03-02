@@ -2,5 +2,5 @@
 en:
   decidim:
     components:
-      initiatives_nosignature_allowed:
-        name: InitiativesNosignatureAllowed
+      initiatives_no_signature_allowed:
+        name: InitiativesNoSignatureAllowed

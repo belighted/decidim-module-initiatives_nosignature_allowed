@@ -2,10 +2,10 @@
 
 require_dependency "decidim/components/namer"
 
-Decidim.register_component(:initiatives_nosignature_allowed) do |component|
-  component.engine = Decidim::InitiativesNosignatureAllowed::Engine
-  component.admin_engine = Decidim::InitiativesNosignatureAllowed::AdminEngine
-  component.icon = "decidim/initiatives_nosignature_allowed/icon.svg"
+Decidim.register_component(:initiatives_no_signature_allowed) do |component|
+  component.engine = Decidim::InitiativesNoSignatureAllowed::Engine
+  component.admin_engine = Decidim::InitiativesNoSignatureAllowed::AdminEngine
+  component.icon = "decidim/initiatives_no_signature_allowed/icon.svg"
 
   # component.on(:before_destroy) do |instance|
   #   # Code executed before removing the component
@@ -26,8 +26,8 @@ Decidim.register_component(:initiatives_nosignature_allowed) do |component|
 
   # component.register_resource(:some_resource) do |resource|
   #   # Register a optional resource that can be references from other resources.
-  #   resource.model_class_name = "Decidim::InitiativesNosignatureAllowed::SomeResource"
-  #   resource.template = "decidim/initiatives_nosignature_allowed/some_resources/linked_some_resources"
+  #   resource.model_class_name = "Decidim::InitiativesNoSignatureAllowed::SomeResource"
+  #   resource.template = "decidim/initiatives_no_signature_allowed/some_resources/linked_some_resources"
   # end
 
   # component.register_stat :some_stat do |context, start_at, end_at|
