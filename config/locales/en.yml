@@ -1,6 +1,19 @@
 ---
 en:
   decidim:
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            sms: SMS
     components:
       initiatives_no_signature_allowed:
         name: InitiativesNoSignatureAllowed
+    initiatives:
+      admin:
+        initiatives:
+          form:
+            title: Title
+        initiatives_types:
+          form:
+            title: Title
