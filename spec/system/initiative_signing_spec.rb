@@ -12,8 +12,8 @@ describe "Initiative signing", type: :system do
 
   before do
     allow(Decidim::Initiatives)
-      .to receive(:do_not_require_authorization)
-      .and_return(true)
+        .to receive(:do_not_require_authorization)
+                .and_return(true)
     switch_to_host(organization.host)
     login_as confirmed_user, scope: :user
   end
@@ -97,14 +97,14 @@ describe "Initiative signing", type: :system do
     context "when the user doesn't have a user group" do
       before do
         initiative.type.create_resource_permission(
-          permissions: {
-            "vote" => {
-              "authorization_handlers" => {
-                "dummy_authorization_handler" => { "options" => {} },
-                "another_dummy_authorization_handler" => { "options" => {} }
-              }
+            permissions: {
+                "vote" => {
+                    "authorization_handlers" => {
+                        "dummy_authorization_handler" => { "options" => {} },
+                        "another_dummy_authorization_handler" => { "options" => {} }
+                    }
+                }
             }
-          }
         )
       end
 
@@ -158,14 +158,14 @@ describe "Initiative signing", type: :system do
 
       before do
         initiative.type.create_resource_permission(
-          permissions: {
-            "vote" => {
-              "authorization_handlers" => {
-                "dummy_authorization_handler" => { "options" => {} },
-                "another_dummy_authorization_handler" => { "options" => {} }
-              }
+            permissions: {
+                "vote" => {
+                    "authorization_handlers" => {
+                        "dummy_authorization_handler" => { "options" => {} },
+                        "another_dummy_authorization_handler" => { "options" => {} }
+                    }
+                }
             }
-          }
         )
       end
 
@@ -216,6 +216,22 @@ describe "Initiative signing", type: :system do
             end
           end
         end
+      end
+    end
+  end
+
+  context "when the initiative type has no signature settings" do
+    let(:initiative) do
+      create(:initiative, :no_signature, :published, organization: organization)
+    end
+
+    it "doesn't display vote button" do
+      visit decidim_initiatives.initiative_path(initiative)
+
+      within ".view-side" do
+        expect(page).to have_content("No signature explanation")
+        expect(page).not_to have_button("Sign")
+        expect(page).not_to have_css(".progress__bar__title")
       end
     end
   end

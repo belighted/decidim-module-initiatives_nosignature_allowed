@@ -1,5 +1,8 @@
 ---
 en:
+  '':
+    no_signature:
+      explanation: Explanation
   activemodel:
     errors:
       models:
@@ -41,6 +44,12 @@ en:
           initiative_type: Initiative type
           more_information: More information
           select_scope: Select scope
+      initiatives:
+        progress_bar:
+          no_signature_explanation: No signature explanation
+        votes_count:
+          most_popular_initiative: Most popular initiative
+          need_more_votes: Need more votes
     verifications:
       authorizations:
         first_login:
