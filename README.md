@@ -1,5 +1,7 @@
 # Decidim::InitiativesNoSignatureAllowed
 
+[![CircleCI](https://circleci.com/gh/OpenSourcePolitics/decidim-module-initiatives_nosignature_allowed.svg?style=svg)](https://circleci.com/gh/OpenSourcePolitics/decidim-module-initiatives_nosignature_allowed)
+
 Allow a user to create an initiative that do not collect signatures..
 
 ## Usage
