@@ -13,23 +13,34 @@ en:
       admin:
         initiatives:
           edit:
-            success: Success
+            success: successfully
           form:
+            help_text: Help text
             title: Title
           update:
             error: Error
-            success: Success
+            success: successfully
         initiatives_types:
           create:
             error: Error
-            success: Success
+            success: successfully
           destroy:
-            success: Success
+            success: successfully
           form:
+            help_text: Help text
             title: Title
           update:
             error: Error
-            success: Success
+            success: successfully
+      create_initiative:
+        fill_data:
+          back: Back
+          continue: Continue
+          fill_data_help: Fill data help
+          help_text: Help text
+          initiative_type: Initiative type
+          more_information: More information
+          select_scope: Select scope
     verifications:
       authorizations:
         first_login:

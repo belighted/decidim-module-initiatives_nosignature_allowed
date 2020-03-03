@@ -148,6 +148,14 @@ describe "Initiative", type: :system do
           expect(find(:xpath, "//input[@id='initiative_description']", visible: false).value).to eq(translated(initiative.description, locale: :en))
         end
 
+        context "when no signature allowed" do
+          let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, organization: organization, minimum_committee_members: initiative_type_minimum_committee_members, signature_type: signature_type) }
+
+          it "displays no signature checkbox" do
+            expect(page).to have_unchecked_field("No signature")
+          end
+        end
+
         context "when only one signature collection and scope are available" do
           let(:other_initiative_type_scope) { nil }
           let(:initiative_type) { create(:initiatives_type, organization: organization, minimum_committee_members: initiative_type_minimum_committee_members, signature_type: "offline") }

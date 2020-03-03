@@ -118,5 +118,25 @@ describe "User prints the initiative", type: :system do
         end
       end
     end
+
+    context "when no signature allowed" do
+      let!(:initiative) { create(:initiative, organization: organization, author: author, scoped_type:scoped_type) }
+      let!(:scoped_type){ create(:initiatives_type_scope, type: initiatives_type) }
+      let!(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
+
+      before do
+        switch_to_host(organization.host)
+        login_as user, scope: :user
+        visit decidim_admin_initiatives.initiatives_path
+      end
+
+      it "displays checkbox" do
+        page.find(".action-icon--edit").click
+
+        within ".edit_initiative" do
+          expect(page).to have_unchecked_field("No signature")
+        end
+      end
+    end
   end
 end

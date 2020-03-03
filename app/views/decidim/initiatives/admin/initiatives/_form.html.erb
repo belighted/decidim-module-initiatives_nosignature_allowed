@@ -54,11 +54,13 @@
       </div>
     <% end %>
 
-    <div class="row">
-      <div class="columns xlarge-6">
-        <%= form.check_box :no_signature %>
+    <% if current_initiative.type.no_signature_allowed? || current_initiative.no_signature.present? %>
+      <div class="row">
+        <div class="columns xlarge-6">
+          <%= form.check_box :no_signature, help_text: t(".help_text") %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="row">
       <div class="columns xlarge-6">
