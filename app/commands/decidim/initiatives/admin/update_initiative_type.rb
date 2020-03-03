@@ -23,6 +23,7 @@ module Decidim
         # Returns nothing.
         def call
           return broadcast(:invalid) if form.invalid?
+
           initiative_type.update(attributes)
 
           if initiative_type.valid?
@@ -40,17 +41,17 @@ module Decidim
 
         def attributes
           result = {
-              title: form.title,
-              description: form.description,
-              signature_type: form.signature_type,
-              undo_online_signatures_enabled: form.undo_online_signatures_enabled,
-              promoting_committee_enabled: form.promoting_committee_enabled,
-              minimum_committee_members: form.minimum_committee_members,
-              collect_user_extra_fields: form.collect_user_extra_fields,
-              extra_fields_legal_information: form.extra_fields_legal_information,
-              validate_sms_code_on_votes: form.validate_sms_code_on_votes,
-              document_number_authorization_handler: form.document_number_authorization_handler,
-              no_signature_allowed: form.no_signature_allowed
+            title: form.title,
+            description: form.description,
+            signature_type: form.signature_type,
+            undo_online_signatures_enabled: form.undo_online_signatures_enabled,
+            promoting_committee_enabled: form.promoting_committee_enabled,
+            minimum_committee_members: form.minimum_committee_members,
+            collect_user_extra_fields: form.collect_user_extra_fields,
+            extra_fields_legal_information: form.extra_fields_legal_information,
+            validate_sms_code_on_votes: form.validate_sms_code_on_votes,
+            document_number_authorization_handler: form.document_number_authorization_handler,
+            no_signature_allowed: form.no_signature_allowed
           }
 
           result[:banner_image] = form.banner_image unless form.banner_image.nil?

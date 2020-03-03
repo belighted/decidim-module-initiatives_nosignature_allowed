@@ -23,6 +23,7 @@ module Decidim
         # Returns nothing.
         def call
           return broadcast(:invalid) if initiative.published?
+
           @initiative = Decidim.traceability.perform_action!(
             :publish,
             initiative,

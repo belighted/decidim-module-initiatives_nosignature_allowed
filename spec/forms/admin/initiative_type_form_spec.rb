@@ -17,20 +17,20 @@ module Decidim
 
         let(:attributes) do
           {
-              title: title,
-              description: Decidim::Faker::Localized.sentence(25),
-              online_signature_enabled: false,
-              undo_online_signatures_enabled: false,
-              promoting_committee_enabled: promoting_committee_enabled,
-              minimum_committee_members: minimum_committee_members,
-              banner_image: Decidim::Dev.test_file("city2.jpeg", "image/jpeg"),
-              no_signature_allowed: no_signature_allowed
+            title: title,
+            description: Decidim::Faker::Localized.sentence(25),
+            online_signature_enabled: false,
+            undo_online_signatures_enabled: false,
+            promoting_committee_enabled: promoting_committee_enabled,
+            minimum_committee_members: minimum_committee_members,
+            banner_image: Decidim::Dev.test_file("city2.jpeg", "image/jpeg"),
+            no_signature_allowed: no_signature_allowed
           }
         end
         let(:context) do
           {
-              current_organization: initiatives_type.organization,
-              current_component: nil
+            current_organization: initiatives_type.organization,
+            current_component: nil
           }
         end
 

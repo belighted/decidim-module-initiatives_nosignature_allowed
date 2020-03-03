@@ -61,14 +61,14 @@ describe Decidim::Initiatives::Permissions do
     context "when the initiative type has permissions to vote" do
       before do
         initiative.type.create_resource_permission(
-            permissions: {
-                "vote" => {
-                    "authorization_handlers" => {
-                        "dummy_authorization_handler" => { "options" => {} },
-                        "another_dummy_authorization_handler" => { "options" => {} }
-                    }
-                }
+          permissions: {
+            "vote" => {
+              "authorization_handlers" => {
+                "dummy_authorization_handler" => { "options" => {} },
+                "another_dummy_authorization_handler" => { "options" => {} }
+              }
             }
+          }
         )
       end
 
@@ -189,8 +189,8 @@ describe Decidim::Initiatives::Permissions do
     context "when creation is enabled" do
       before do
         allow(Decidim::Initiatives)
-            .to receive(:creation_enabled)
-                    .and_return(true)
+          .to receive(:creation_enabled)
+          .and_return(true)
       end
 
       it { is_expected.to eq false }
@@ -198,8 +198,8 @@ describe Decidim::Initiatives::Permissions do
       context "when authorizations are not required" do
         before do
           allow(Decidim::Initiatives)
-              .to receive(:do_not_require_authorization)
-                      .and_return(true)
+            .to receive(:do_not_require_authorization)
+            .and_return(true)
         end
 
         it { is_expected.to eq true }
@@ -225,8 +225,8 @@ describe Decidim::Initiatives::Permissions do
     context "when creation is not enabled" do
       before do
         allow(Decidim::Initiatives)
-            .to receive(:creation_enabled)
-                    .and_return(false)
+          .to receive(:creation_enabled)
+          .and_return(false)
       end
 
       it { is_expected.to eq false }
@@ -263,8 +263,8 @@ describe Decidim::Initiatives::Permissions do
         context "when authorizations are not required" do
           before do
             allow(Decidim::Initiatives)
-                .to receive(:do_not_require_authorization)
-                        .and_return(true)
+              .to receive(:do_not_require_authorization)
+              .and_return(true)
           end
 
           it { is_expected.to eq true }
@@ -336,14 +336,14 @@ describe Decidim::Initiatives::Permissions do
       context "when the initiative type has permissions to vote" do
         before do
           initiative.type.create_resource_permission(
-              permissions: {
-                  "vote" => {
-                      "authorization_handlers" => {
-                          "dummy_authorization_handler" => { "options" => {} },
-                          "another_dummy_authorization_handler" => { "options" => {} }
-                      }
-                  }
+            permissions: {
+              "vote" => {
+                "authorization_handlers" => {
+                  "dummy_authorization_handler" => { "options" => {} },
+                  "another_dummy_authorization_handler" => { "options" => {} }
+                }
               }
+            }
           )
         end
 

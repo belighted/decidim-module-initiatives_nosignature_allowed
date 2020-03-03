@@ -120,8 +120,8 @@ describe "User prints the initiative", type: :system do
     end
 
     context "when no signature allowed" do
-      let!(:initiative) { create(:initiative, organization: organization, author: author, scoped_type:scoped_type) }
-      let!(:scoped_type){ create(:initiatives_type_scope, type: initiatives_type) }
+      let!(:initiative) { create(:initiative, organization: organization, author: author, scoped_type: scoped_type) }
+      let!(:scoped_type) { create(:initiatives_type_scope, type: initiatives_type) }
       let!(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
 
       before do

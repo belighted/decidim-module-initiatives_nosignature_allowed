@@ -5,10 +5,10 @@ shared_examples "update an initiative type" do
   let(:initiative_type) { create(:initiatives_type, :online_signature_enabled, :undo_online_signatures_enabled, organization: organization) }
   let(:form) do
     form_klass.from_params(
-        form_params
+      form_params
     ).with_context(
-        current_organization: initiative_type.organization,
-        current_component: nil
+      current_organization: initiative_type.organization,
+      current_component: nil
     )
   end
   let(:no_signature_allowed) { nil }
@@ -16,17 +16,17 @@ shared_examples "update an initiative type" do
   describe "call" do
     let(:form_params) do
       {
-          title: Decidim::Faker::Localized.sentence(5),
-          description: Decidim::Faker::Localized.sentence(25),
-          signature_type: "offline",
-          undo_online_signatures_enabled: false,
-          promoting_committee_enabled: true,
-          minimum_committee_members: 7,
-          banner_image: Decidim::Dev.test_file("city2.jpeg", "image/jpeg"),
-          collect_user_extra_fields: true,
-          extra_fields_legal_information: Decidim::Faker::Localized.sentence(25),
-          document_number_authorization_handler: "",
-          no_signature_allowed: no_signature_allowed
+        title: Decidim::Faker::Localized.sentence(5),
+        description: Decidim::Faker::Localized.sentence(25),
+        signature_type: "offline",
+        undo_online_signatures_enabled: false,
+        promoting_committee_enabled: true,
+        minimum_committee_members: 7,
+        banner_image: Decidim::Dev.test_file("city2.jpeg", "image/jpeg"),
+        collect_user_extra_fields: true,
+        extra_fields_legal_information: Decidim::Faker::Localized.sentence(25),
+        document_number_authorization_handler: "",
+        no_signature_allowed: no_signature_allowed
       }
     end
 

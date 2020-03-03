@@ -16,7 +16,7 @@ module Decidim
       end
 
       initializer "decidim_initiatives_no_signature_allowed.assets" do |app|
-        app.config.assets.precompile += %w[decidim_initiatives_no_signature_allowed_manifest.js decidim_initiatives_no_signature_allowed_manifest.css]
+        app.config.assets.precompile += %w(decidim_initiatives_no_signature_allowed_manifest.js decidim_initiatives_no_signature_allowed_manifest.css)
       end
     end
   end

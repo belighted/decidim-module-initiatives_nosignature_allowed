@@ -32,8 +32,8 @@ module Decidim
 
         validates :offline_votes,
                   numericality: {
-                      only_integer: true,
-                      greater_than: 0
+                    only_integer: true,
+                    greater_than: 0
                   }, allow_blank: true
 
         validate :check_no_signature

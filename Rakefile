@@ -25,13 +25,13 @@ desc "Generates a development app"
 task :development_app do
   Bundler.with_original_env do
     generate_decidim_app(
-        "development_app",
-        "--app_name",
-        "#{base_app_name}_development_app",
-        "--path",
-        "..",
-        "--recreate_db",
-        "--demo"
+      "development_app",
+      "--app_name",
+      "#{base_app_name}_development_app",
+      "--path",
+      "..",
+      "--recreate_db",
+      "--demo"
     )
   end
 

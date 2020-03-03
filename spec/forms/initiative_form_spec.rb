@@ -16,18 +16,18 @@ module Decidim
 
       let(:attributes) do
         {
-            title: title,
-            description: Decidim::Faker::Localized.sentence(25),
-            type_id: initiatives_type.id,
-            scope_id: scope&.scope&.id,
-            signature_type: "offline",
-            no_signature: no_signature
+          title: title,
+          description: Decidim::Faker::Localized.sentence(25),
+          type_id: initiatives_type.id,
+          scope_id: scope&.scope&.id,
+          signature_type: "offline",
+          no_signature: no_signature
         }
       end
       let(:context) do
         {
-            current_organization: organization,
-            current_component: nil
+          current_organization: organization,
+          current_component: nil
         }
       end
 

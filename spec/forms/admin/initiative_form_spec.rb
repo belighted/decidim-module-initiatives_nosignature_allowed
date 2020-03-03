@@ -20,10 +20,10 @@ module Decidim
 
         let(:context) do
           {
-              current_user: user,
-              current_organization: organization,
-              current_component: nil,
-              initiative: initiative
+            current_user: user,
+            current_organization: organization,
+            current_component: nil,
+            initiative: initiative
           }
         end
 
@@ -33,13 +33,13 @@ module Decidim
 
         let(:attributes) do
           {
-              type_id: type_id,
-              decidim_scope_id: decidim_scope_id,
-              title: Decidim::Faker::Localized.sentence(2),
-              description: Decidim::Faker::Localized.sentence(5),
-              state: "created",
-              signature_type: "online",
-              no_signature: no_signature
+            type_id: type_id,
+            decidim_scope_id: decidim_scope_id,
+            title: Decidim::Faker::Localized.sentence(2),
+            description: Decidim::Faker::Localized.sentence(5),
+            state: "created",
+            signature_type: "online",
+            no_signature: no_signature
           }
         end
 
@@ -48,14 +48,14 @@ module Decidim
         end
 
         context "when no signature allowed is not activated" do
-          let(:initiative) { create(:initiative, :no_signature,organization: organization, state: state, scoped_type: scope) }
+          let(:initiative) { create(:initiative, :no_signature, organization: organization, state: state, scoped_type: scope) }
 
           it { is_expected.to be_invalid }
         end
 
         context "when no signature allowed is activated" do
           let(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
-          let(:initiative) { create(:initiative, :no_signature,organization: organization, state: state, scoped_type: scope) }
+          let(:initiative) { create(:initiative, :no_signature, organization: organization, state: state, scoped_type: scope) }
 
           it { is_expected.to be_valid }
         end
@@ -111,10 +111,10 @@ module Decidim
             context "when no type or decidim_scope_id are provided" do
               let(:attributes) do
                 {
-                    title: Decidim::Faker::Localized.sentence(2),
-                    description: Decidim::Faker::Localized.sentence(5),
-                    state: "created",
-                    signature_type: "online"
+                  title: Decidim::Faker::Localized.sentence(2),
+                  description: Decidim::Faker::Localized.sentence(5),
+                  state: "created",
+                  signature_type: "online"
                 }
               end
 
