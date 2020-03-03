@@ -3,29 +3,31 @@
 shared_examples "update an initiative" do
   let(:organization) { create(:organization) }
   let(:initiative) { create(:initiative, organization: organization) }
+  let(:no_signature) { nil }
 
   let(:form) do
     form_klass.from_params(
-      form_params
+        form_params
     ).with_context(
-      current_organization: organization,
-      current_component: nil,
-      initiative: initiative
+        current_organization: organization,
+        current_component: nil,
+        initiative: initiative
     )
   end
 
   let(:signature_end_date) { Date.current + 130.days }
   let(:form_params) do
     {
-      title: { en: "A reasonable initiative title" },
-      description: { en: "A reasonable initiative description" },
-      signature_start_date: Date.current + 10.days,
-      signature_end_date: signature_end_date,
-      signature_type: "any",
-      type_id: initiative.type.id,
-      decidim_scope_id: initiative.scope.id,
-      hashtag: "update_initiative_example",
-      offline_votes: 1
+        title: { en: "A reasonable initiative title" },
+        description: { en: "A reasonable initiative description" },
+        signature_start_date: Date.current + 10.days,
+        signature_end_date: signature_end_date,
+        signature_type: "any",
+        type_id: initiative.type.id,
+        decidim_scope_id: initiative.scope.id,
+        hashtag: "update_initiative_example",
+        offline_votes: 1,
+        no_signature: no_signature
     }
   end
   let(:current_user) { initiative.author }
@@ -56,6 +58,14 @@ shared_examples "update an initiative" do
         expect { command.call }.to broadcast(:ok)
       end
 
+      context "when no_signature" do
+        let(:no_signature) { true }
+
+        it "broadcasts ok" do
+          expect { command.call }.to broadcast(:ok)
+        end
+      end
+
       it "updates the initiative" do
         command.call
         initiative.reload
@@ -68,9 +78,9 @@ shared_examples "update an initiative" do
 
       it "traces the action", versioning: true do
         expect(Decidim.traceability)
-          .to receive(:update!)
-          .with(initiative, initiative.author, kind_of(Hash))
-          .and_call_original
+            .to receive(:update!)
+                    .with(initiative, initiative.author, kind_of(Hash))
+                    .and_call_original
 
         expect { command.call }.to change(Decidim::ActionLog, :count)
         action_log = Decidim::ActionLog.last

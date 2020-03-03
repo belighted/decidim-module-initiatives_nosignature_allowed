@@ -47,8 +47,15 @@ module Decidim
           it { is_expected.to be_valid }
         end
 
-        context "when no signature" do
-          let(:no_signature) { true }
+        context "when no signature allowed is not activated" do
+          let(:initiative) { create(:initiative, :no_signature,organization: organization, state: state, scoped_type: scope) }
+
+          it { is_expected.to be_invalid }
+        end
+
+        context "when no signature allowed is activated" do
+          let(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
+          let(:initiative) { create(:initiative, :no_signature,organization: organization, state: state, scoped_type: scope) }
 
           it { is_expected.to be_valid }
         end

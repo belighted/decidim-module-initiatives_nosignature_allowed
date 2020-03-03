@@ -13,7 +13,9 @@ module Decidim
     context "when no signature allowed" do
       let(:initiatives_type) { build :initiatives_type, :no_signature_allowed }
 
-      expect(initiatives_type).to be_valid
+      it "is valid" do
+        expect(initiatives_type).to be_valid
+      end
     end
 
     describe "::initiatives" do

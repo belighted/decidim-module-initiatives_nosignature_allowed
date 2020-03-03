@@ -1,19 +1,37 @@
 ---
 en:
+  activemodel:
+    errors:
+      models:
+        initiatives:
+          no_signature_allowed: No signature mode is not allowed
   decidim:
-    verifications:
-      authorizations:
-        first_login:
-          actions:
-            sms: SMS
     components:
       initiatives_no_signature_allowed:
         name: InitiativesNoSignatureAllowed
     initiatives:
       admin:
         initiatives:
+          edit:
+            success: Success
           form:
             title: Title
+          update:
+            error: Error
+            success: Success
         initiatives_types:
+          create:
+            error: Error
+            success: Success
+          destroy:
+            success: Success
           form:
             title: Title
+          update:
+            error: Error
+            success: Success
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            sms: SMS

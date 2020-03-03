@@ -4,6 +4,7 @@ shared_examples "create an initiative" do
   let(:scoped_type) { create(:initiatives_type_scope) }
   let(:author) { create(:user, organization: scoped_type.type.organization) }
   let(:form) { form_klass.from_params(form_params).with_context(current_organization: scoped_type.type.organization) }
+  let(:no_signature) { true }
 
   describe "call" do
     let(:form_params) do
@@ -13,7 +14,8 @@ shared_examples "create an initiative" do
         type_id: scoped_type.type.id,
         signature_type: "online",
         scope_id: scoped_type.scope.id,
-        decidim_user_group_id: nil
+        decidim_user_group_id: nil,
+        no_signature: no_signature
       }
     end
 

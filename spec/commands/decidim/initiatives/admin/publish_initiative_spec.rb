@@ -24,11 +24,19 @@ module Decidim
             expect { subject.call }.to change(initiative, :state).from("created").to("published")
           end
 
+          context "when no signature" do
+            let(:initiative) { create :initiative, :no_signature, :created }
+
+            it "publishes the initiative" do
+              expect { subject.call }.to change(initiative, :state).from("created").to("published")
+            end
+          end
+
           it "traces the action", versioning: true do
             expect(Decidim.traceability)
-              .to receive(:perform_action!)
-              .with(:publish, initiative, user, visibility: "all")
-              .and_call_original
+                .to receive(:perform_action!)
+                        .with(:publish, initiative, user, visibility: "all")
+                        .and_call_original
 
             expect { subject.call }.to change(Decidim::ActionLog, :count)
             action_log = Decidim::ActionLog.last

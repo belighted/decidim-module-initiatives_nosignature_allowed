@@ -15,7 +15,7 @@ FactoryBot.modify do
     minimum_committee_members { 3 }
 
     trait :no_signature_allowed do
-      no_signature { true }
+      no_signature_allowed { true }
     end
 
     trait :online_signature_enabled do
