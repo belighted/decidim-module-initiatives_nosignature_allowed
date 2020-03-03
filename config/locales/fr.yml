@@ -9,10 +9,25 @@ fr:
         initiatives:
           no_signature_allowed: No signature mode is not allowed
   decidim:
+    admin:
+      actions:
+        configure: Configure
+      models:
+        initiatives:
+          fields:
+            created_at: Created at
+            id: Id
+            state: State
+            supports_count: Supports count
+            title: Title
+      titles:
+        initiatives: Initiatives
     components:
       initiatives_no_signature_allowed:
         name: InitiativesNoSignatureAllowed
     initiatives:
+      actions:
+        answer: Answer
       admin:
         initiatives:
           edit:
@@ -20,6 +35,11 @@ fr:
           form:
             help_text: Help text
             title: Title
+          index:
+            actions_title: Actions title
+            no_signature: No signature
+            preview: Preview
+            print: Print
           update:
             error: Error
             success: successfully
