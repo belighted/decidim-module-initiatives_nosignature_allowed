@@ -59,5 +59,19 @@ describe "Initiatives", type: :system do
       click_link(translated(initiative.title, locale: :en))
       expect(page).to have_current_path(decidim_initiatives.initiative_path(initiative))
     end
+
+    context "when no signature mode is activated" do
+      let!(:initiative) { create(:initiative, :published, :no_signature, organization: organization) }
+
+      it "doesn't displays signature count" do
+        expect(page).not_to have_content("#{initiative.initiative_votes_count}/#{initiative.supports_required}")
+        expect(page).not_to have_css("#initiative_#{initiative.id} .card__support__data")
+      end
+
+      it "doesn't displays sign button" do
+        expect(page).not_to have_content("CHECK IT OUT AND SIGN")
+        expect(page).to have_content("CHECK IT OUT")
+      end
+    end
   end
 end
