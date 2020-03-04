@@ -47,5 +47,13 @@ describe "Initiative", type: :system do
     end
 
     it_behaves_like "has attachments"
+
+    context "when no signature" do
+      let!(:initiative) { create(:initiative, :no_signature, organization: organization) }
+
+      it "displays no signature" do
+        expect(page).to have_content("No signature explanation")
+      end
+    end
   end
 end
