@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
 shared_examples "create an initiative" do
-  let(:scoped_type) { create(:initiatives_type_scope) }
+  let(:organization) { create(:organization) }
   let(:author) { create(:user, organization: scoped_type.type.organization) }
   let(:form) { form_klass.from_params(form_params).with_context(current_organization: scoped_type.type.organization) }
   let(:no_signature) { true }
+  let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
+  let(:scoped_type) { create(:initiatives_type_scope, type: initiative_type) }
 
   describe "call" do
     let(:form_params) do
       {
-        title: "A reasonable initiative title",
-        description: "A reasonable initiative description",
-        type_id: scoped_type.type.id,
-        signature_type: "online",
-        scope_id: scoped_type.scope.id,
-        decidim_user_group_id: nil,
-        no_signature: no_signature
+          title: "A reasonable initiative title",
+          description: "A reasonable initiative description",
+          type_id: scoped_type.type.id,
+          signature_type: "online",
+          scope_id: scoped_type.scope.id,
+          decidim_user_group_id: nil,
+          no_signature: no_signature
       }
     end
 

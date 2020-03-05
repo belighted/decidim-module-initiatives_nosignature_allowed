@@ -16,10 +16,10 @@ module Decidim
         let(:initiative) { create(:initiative, organization: organization) }
         let(:form) do
           form_klass
-            .from_model(initiative)
-            .with_context(
-              current_organization: organization
-            )
+              .from_model(initiative)
+              .with_context(
+                  current_organization: organization
+              )
         end
 
         let(:command) { described_class.new(form, initiative.author) }
@@ -36,19 +36,20 @@ module Decidim
           described_class.new(form, author)
         end
 
-        let(:scoped_type) { create(:initiatives_type_scope) }
-        let(:organization) { scoped_type.type.organization }
+        let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
+        let(:scoped_type) { create(:initiatives_type_scope, type: initiative_type) }
+        let(:organization) { create(:organization) }
         let(:author) { create(:user, organization: organization) }
         let(:form) { form_klass.from_params(form_params).with_context(current_organization: organization) }
         let(:form_params) do
           {
-            title: "A reasonable initiative title",
-            description: "A reasonable initiative description",
-            type_id: scoped_type.type.id,
-            signature_type: "online",
-            scope_id: scoped_type.scope.id,
-            decidim_user_group_id: nil,
-            no_signature: true
+              title: "A reasonable initiative title",
+              description: "A reasonable initiative description",
+              type_id: scoped_type.type.id,
+              signature_type: "online",
+              scope_id: scoped_type.scope.id,
+              decidim_user_group_id: nil,
+              no_signature: true
           }
         end
         let(:follower) { create(:user, organization: organization) }
@@ -56,13 +57,13 @@ module Decidim
 
         it "notifies the creation" do
           expect(Decidim::EventsManager)
-            .to receive(:publish)
-            .with(
-              event: "decidim.events.initiatives.initiative_created",
-              event_class: Decidim::Initiatives::CreateInitiativeEvent,
-              resource: kind_of(Decidim::Initiative),
-              followers: [follower]
-            )
+              .to receive(:publish)
+                      .with(
+                          event: "decidim.events.initiatives.initiative_created",
+                          event_class: Decidim::Initiatives::CreateInitiativeEvent,
+                          resource: kind_of(Decidim::Initiative),
+                          followers: [follower]
+                      )
 
           subject.call
         end
