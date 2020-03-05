@@ -13,7 +13,7 @@ module Decidim
         let(:title) { Decidim::Faker::Localized.sentence(5) }
         let(:promoting_committee_enabled) { true }
         let(:minimum_committee_members) { 5 }
-        let(:no_signature) { nil }
+        let(:no_signature_allowed) { nil }
 
         let(:attributes) do
           {
