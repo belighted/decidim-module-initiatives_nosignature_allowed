@@ -1,13 +1,10 @@
 ---
 fr:
-  '':
-    no_signature:
-      explanation: Explanation
   activemodel:
     errors:
       models:
         initiatives:
-          no_signature_allowed: No signature mode is not allowed
+          no_signature_allowed: No signature allowed
   decidim:
     admin:
       actions:
@@ -16,57 +13,76 @@ fr:
         initiatives:
           fields:
             created_at: Created at
-            id: Id
-            state: State
-            supports_count: Supports count
-            title: Title
+            id: ID
+            state: Status
+            supports_count: Signatures
+            title: Initiatives
       titles:
         initiatives: Initiatives
-    components:
-      initiatives_no_signature_allowed:
-        name: InitiativesNoSignatureAllowed
     initiatives:
       actions:
         answer: Answer
       admin:
         initiatives:
           edit:
-            success: successfully
+            success: The initiative has been sent to technical validation
           form:
             help_text: Help text
-            title: Title
+            title: General information
           index:
-            actions_title: Actions title
+            actions_title: Action
             no_signature: No signature
             preview: Preview
             print: Print
           update:
-            error: Error
-            success: successfully
+            error: An error has occurred
+            success: The initiative has been successfully updated
         initiatives_types:
           create:
-            error: Error
-            success: successfully
+            error: An error has occurred
+            success: A new initiative type has been successfully created
           destroy:
-            success: successfully
+            success: The initiative type has been successfully removed
           form:
             help_text: Help text
-            title: Title
+            title: General information
           update:
-            error: Error
-            success: successfully
+            error: An error has occurred
+            success: The initiative type has been successfully updated
+      admin_states:
+        accepted: Accepted
+        created: Created
+        discarded: Discarded
+        published: Published
+        rejected: Rejected
+        validating: Technical validation
       create_initiative:
         fill_data:
           back: Back
           continue: Continue
-          fill_data_help: Fill data help
+          fill_data_help: "<ul> <li>Review the content of your initiative. Is your
+            title easy to understand? Is the objective of your initiative clear?</li>
+            <li>You have to choose the type of signature. In-person, online or a combination
+            of both</li> <li>Which is the geographic scope of the initiative? City,
+            district?</li> </ul>"
           help_text: Help text
           initiative_type: Initiative type
-          more_information: More information
-          select_scope: Select scope
+          more_information: "(More information)"
+          select_scope: Select a scope
       initiatives:
         progress_bar:
           no_signature_explanation: No signature explanation
+        vote_cabin:
+          already_voted: Already signed
+          verification_required: Verify your account to sign the initiative
+          vote: Sign
+          votes_blocked: Signing disabled
         votes_count:
           most_popular_initiative: Most popular initiative
-          need_more_votes: Need more votes
+          need_more_votes: Need more signatures
+  layouts:
+    decidim:
+      initiatives:
+        initiative:
+          check: Check it out
+          check_and_support: Check it out and sign
