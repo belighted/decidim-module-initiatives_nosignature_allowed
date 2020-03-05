@@ -61,6 +61,7 @@ jobs:
             # download test reporter as a static binary
               curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
               chmod +x ./cc-test-reporter
+
       - run:
           name: run tests
           command: |
@@ -74,6 +75,7 @@ jobs:
             --out /tmp/test-results/rspec.xml \
             --format progress \
             $TEST_FILES
+
       - run:
           name: Report test coverage
           command: |
