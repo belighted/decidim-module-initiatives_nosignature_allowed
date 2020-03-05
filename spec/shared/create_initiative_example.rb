@@ -11,13 +11,13 @@ shared_examples "create an initiative" do
   describe "call" do
     let(:form_params) do
       {
-          title: "A reasonable initiative title",
-          description: "A reasonable initiative description",
-          type_id: scoped_type.type.id,
-          signature_type: "online",
-          scope_id: scoped_type.scope.id,
-          decidim_user_group_id: nil,
-          no_signature: no_signature
+        title: "A reasonable initiative title",
+        description: "A reasonable initiative description",
+        type_id: scoped_type.type.id,
+        signature_type: "online",
+        scope_id: scoped_type.scope.id,
+        decidim_user_group_id: nil,
+        no_signature: no_signature
       }
     end
 

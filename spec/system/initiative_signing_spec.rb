@@ -10,11 +10,11 @@ describe "Initiative signing", type: :system do
   let(:confirmed_user) { create(:user, :confirmed, organization: organization) }
   let(:authorizations) { %w(dummy_authorization_handler another_dummy_authorization_handler) }
 
-  context "the user is not logged in" do
+  context "when the user is not logged in" do
     before do
       allow(Decidim::Initiatives)
-          .to receive(:do_not_require_authorization)
-                  .and_return(true)
+        .to receive(:do_not_require_authorization)
+        .and_return(true)
       switch_to_host(organization.host)
     end
 
@@ -33,11 +33,11 @@ describe "Initiative signing", type: :system do
     end
   end
 
-  context "the user is logged in" do
+  context "when the user is logged in" do
     before do
       allow(Decidim::Initiatives)
-          .to receive(:do_not_require_authorization)
-                  .and_return(true)
+        .to receive(:do_not_require_authorization)
+        .and_return(true)
       switch_to_host(organization.host)
       login_as confirmed_user, scope: :user
     end
@@ -121,14 +121,14 @@ describe "Initiative signing", type: :system do
       context "when the user doesn't have a user group" do
         before do
           initiative.type.create_resource_permission(
-              permissions: {
-                  "vote" => {
-                      "authorization_handlers" => {
-                          "dummy_authorization_handler" => { "options" => {} },
-                          "another_dummy_authorization_handler" => { "options" => {} }
-                      }
-                  }
+            permissions: {
+              "vote" => {
+                "authorization_handlers" => {
+                  "dummy_authorization_handler" => { "options" => {} },
+                  "another_dummy_authorization_handler" => { "options" => {} }
+                }
               }
+            }
           )
         end
 
@@ -182,14 +182,14 @@ describe "Initiative signing", type: :system do
 
         before do
           initiative.type.create_resource_permission(
-              permissions: {
-                  "vote" => {
-                      "authorization_handlers" => {
-                          "dummy_authorization_handler" => { "options" => {} },
-                          "another_dummy_authorization_handler" => { "options" => {} }
-                      }
-                  }
+            permissions: {
+              "vote" => {
+                "authorization_handlers" => {
+                  "dummy_authorization_handler" => { "options" => {} },
+                  "another_dummy_authorization_handler" => { "options" => {} }
+                }
               }
+            }
           )
         end
 
