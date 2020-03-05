@@ -22,10 +22,17 @@ module Decidim
       validates :signature_type, presence: true
       validates :type_id, presence: true
       validate :scope_exists
+      validate :check_no_signature
 
       def map_model(model)
         self.type_id = model.type.id
         self.scope_id = model.scope&.id
+      end
+
+      def check_no_signature
+        return true if no_signature.blank?
+
+        errors.add(:no_signature, I18n.t("activemodel.errors.models.initiatives.no_signature_allowed")) unless type.no_signature_allowed?
       end
 
       def signature_type_updatable?
@@ -42,6 +49,10 @@ module Decidim
         return if scope_id.blank?
 
         errors.add(:scope_id, :invalid) unless InitiativesTypeScope.where(decidim_initiatives_types_id: type_id, decidim_scopes_id: scope_id).exists?
+      end
+
+      def type
+        @type ||= Decidim::InitiativesType.find(type_id)
       end
     end
   end
