@@ -14,7 +14,7 @@ Space.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'decidim-initiatives_no_signature_allowed'
+gem 'decidim-initiatives_no_signature_allowed', git: "https://github.com/OpenSourcePolitics/decidim-module-initiatives_nosignature_allowed.git"
 ```
 
 And then execute:
