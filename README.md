@@ -21,6 +21,8 @@ And then execute:
 
 ```bash
 bundle
+bundle exec rake decidim_initiatives_no_signature_allowed:install:migrations
+bundle exec rake db:migrate
 ```
 
 ## Contributing
