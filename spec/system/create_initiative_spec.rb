@@ -142,6 +142,10 @@ describe "Initiative", type: :system do
           end
         end
 
+        it "doesn't displays no signature checkbox" do
+          expect(page).not_to have_unchecked_field("No signature")
+        end
+
         it "Information collected in previous steps is already filled" do
           expect(find(:xpath, "//input[@id='initiative_type_id']", visible: false).value).to eq(initiative_type.id.to_s)
           expect(find(:xpath, "//input[@id='initiative_title']").value).to eq(translated(initiative.title, locale: :en))

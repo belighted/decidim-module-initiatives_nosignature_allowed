@@ -36,9 +36,11 @@
               <%= f.editor :description, lines: 8, toolbar: :full, required: true %>
             </div>
 
-            <div class="field">
-              <%= f.check_box :no_signature, help_text: t(".help_text") %>
-            </div>
+            <% if initiative_type.no_signature_allowed? %>
+              <div class="field">
+                <%= f.check_box :no_signature, help_text: t(".help_text") %>
+              </div>
+            <% end %>
 
             <% signature_type_options = signature_type_options(f.object) %>
             <% if signature_type_options.length == 1 %>
@@ -54,7 +56,7 @@
             <% else %>
               <div class="field">
                 <%= f.select :scope_id,
-                             scopes.map { |scope| [translated_attribute(scope.scope_name), scope&.scope&.id]},
+                             scopes.map { |scope| [translated_attribute(scope.scope_name), scope&.scope&.id] },
                              prompt: t(".select_scope") %>
               </div>
             <% end %>
@@ -62,7 +64,7 @@
             <% if Decidim::UserGroups::ManageableUserGroups.for(current_user).verified.any? %>
               <div class="field">
                 <%= f.select :decidim_user_group_id,
-                             Decidim::UserGroups::ManageableUserGroups.for(current_user).verified.map{ |g| [g.name, g.id] },
+                             Decidim::UserGroups::ManageableUserGroups.for(current_user).verified.map { |g| [g.name, g.id] },
                              prompt: current_user.name %>
               </div>
             <% end %>
