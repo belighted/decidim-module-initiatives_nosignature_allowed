@@ -4,18 +4,18 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim"
-gem "decidim-initiatives", git: "https://github.com/decidim/decidim"
+gem "decidim", git: "https://github.com/OpenSourcePolitics/decidim.git", branch: "alt/petition-without-signature"
+gem "decidim-initiatives", git: "https://github.com/OpenSourcePolitics/decidim.git", branch: "alt/petition-without-signature"
 gem "decidim-initiatives_no_signature_allowed", path: "."
 
-gem "puma", "~> 3.12.2"
+gem "puma", ">= 4.3"
 gem "uglifier", "~> 4.1"
 
 gem "bootsnap"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-  gem "decidim-dev", git: "https://github.com/decidim/decidim"
+  gem "decidim-dev", git: "https://github.com/OpenSourcePolitics/decidim.git", branch: "alt/petition-without-signature"
 end
 
 group :development do
