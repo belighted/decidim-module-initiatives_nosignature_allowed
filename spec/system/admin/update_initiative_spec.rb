@@ -121,8 +121,8 @@ describe "User prints the initiative", type: :system do
 
     context "when no signature allowed" do
       let!(:initiative) { create(:initiative, organization: organization, author: author, scoped_type: scoped_type) }
-      let!(:scoped_type) { create(:initiatives_type_scope, type: initiatives_type) }
-      let!(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
+      let(:scoped_type) { create(:initiatives_type_scope, type: initiatives_type) }
+      let(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
 
       before do
         switch_to_host(organization.host)
@@ -139,7 +139,12 @@ describe "User prints the initiative", type: :system do
       end
 
       context "when custom signature end date enabled and no signature is selected" do
-        let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, :custom_signature_end_date_enabled, organization: organization) }
+        let!(:initiative) { create(:initiative, :created, organization: organization, author: author, scoped_type: scoped_type) }
+        let(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, :custom_signature_end_date_enabled, organization: organization) }
+
+        before do
+          page.find(".action-icon--edit").click
+        end
 
         it "hides the signature end date" do
           check("No signature")
@@ -149,13 +154,14 @@ describe "User prints the initiative", type: :system do
       end
 
       context "when custom signature end date enabled and no signature is deselected" do
-        let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, :custom_signature_end_date_enabled, organization: organization) }
+        let!(:initiative) { create(:initiative, :created, :no_signature, organization: organization, author: author, scoped_type: scoped_type) }
+        let(:initiatives_type) { create(:initiatives_type, :no_signature_allowed, :custom_signature_end_date_enabled, organization: organization) }
 
         before do
-          check("No signature")
+          page.find(".action-icon--edit").click
         end
 
-        it "hides the signature end date" do
+        it "shows the signature end date" do
           uncheck("No signature")
 
           expect(page).to have_content("End of signature collection period")
