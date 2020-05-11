@@ -35,7 +35,6 @@ FactoryBot.modify do
       undo_online_signatures_enabled { false }
     end
 
-
     trait :custom_signature_end_date_enabled do
       custom_signature_end_date_enabled { true }
     end

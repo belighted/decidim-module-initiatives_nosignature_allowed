@@ -64,7 +64,7 @@ describe "InitiativeTypesController", type: :system do
       select("In-person", from: "Signature type")
       uncheck "Enable participants to undo their online signatures"
       check "Enable authors to choose the end of signature collection period"
-      
+
       click_button "Update"
 
       within ".callout-wrapper" do

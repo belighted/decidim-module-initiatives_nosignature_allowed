@@ -138,7 +138,6 @@ describe "User prints the initiative", type: :system do
         end
       end
 
-
       context "when custom signature end date enabled and no signature is selected" do
         let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, :custom_signature_end_date_enabled, organization: organization) }
 

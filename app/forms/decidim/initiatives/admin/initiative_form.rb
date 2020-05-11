@@ -33,8 +33,6 @@ module Decidim
           form.signature_start_date.blank? && form.signature_end_date.present?
         }
 
-
-
         validates :offline_votes,
                   numericality: {
                     only_integer: true,
