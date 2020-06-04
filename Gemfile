@@ -8,7 +8,7 @@ gem "decidim", git: "https://github.com/OpenSourcePolitics/decidim.git", branch:
 gem "decidim-initiatives", git: "https://github.com/OpenSourcePolitics/decidim.git", branch: "alt/petition-without-signature"
 gem "decidim-initiatives_no_signature_allowed", path: "."
 
-gem "puma", ">= 4.3"
+gem "puma", ">= 4.3.3"
 gem "uglifier", "~> 4.1"
 
 gem "bootsnap"
