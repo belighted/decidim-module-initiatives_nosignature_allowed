@@ -5,6 +5,7 @@ module Decidim
     # A command with all the business logic that creates a new initiative.
     class CreateInitiative < Rectify::Command
       include CurrentLocale
+      include AttachmentMethods
 
       # Public: Initializes the command.
       #
@@ -24,6 +25,11 @@ module Decidim
       def call
         return broadcast(:invalid) if form.invalid?
 
+        if process_attachments?
+          build_attachment
+          return broadcast(:invalid) if attachment_invalid?
+        end
+
         initiative = create_initiative
 
         if initiative.persisted?
@@ -35,7 +41,7 @@ module Decidim
 
       private
 
-      attr_reader :form, :current_user
+      attr_reader :form, :current_user, :attachment
 
       # Creates the initiative and all default components
       def create_initiative
@@ -44,6 +50,8 @@ module Decidim
 
         initiative.transaction do
           initiative.save!
+          @attached_to = initiative
+          create_attachment if process_attachments?
           create_components_for(initiative)
           send_notification(initiative)
           add_author_as_follower(initiative)
@@ -57,11 +65,12 @@ module Decidim
         Initiative.new(
           organization: form.current_organization,
           title: { current_locale => form.title },
-          description: { current_locale => form.description },
+          description: { current_locale => Decidim::ApplicationController.helpers.strip_tags(form.description) },
           author: current_user,
           decidim_user_group_id: form.decidim_user_group_id,
           scoped_type: scoped_type,
           signature_type: form.signature_type,
+          signature_end_date: signature_end_date,
           state: "created",
           no_signature: form.no_signature
         )
@@ -69,9 +78,15 @@ module Decidim
 
       def scoped_type
         InitiativesTypeScope.find_by(
-          decidim_initiatives_types_id: form.type_id,
-          decidim_scopes_id: form.scope_id
+          type: form.initiative_type,
+          scope: form.scope
         )
+      end
+
+      def signature_end_date
+        return nil unless form.context.initiative_type.custom_signature_end_date_enabled?
+
+        form.signature_end_date
       end
 
       def create_components_for(initiative)
