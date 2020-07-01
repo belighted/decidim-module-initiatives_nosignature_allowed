@@ -1,8 +1,28 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: f5c47d8d3a1eeace708c4e543254ecb140779d7e
-  branch: develop
+  revision: 40468ca9ca41dd4fda3fa8f32d0db60e68122ed8
+  branch: release/0.22-stable
   specs:
+    decidim (0.22.0.rc1)
+      decidim-accountability (= 0.22.0.rc1)
+      decidim-admin (= 0.22.0.rc1)
+      decidim-api (= 0.22.0.rc1)
+      decidim-assemblies (= 0.22.0.rc1)
+      decidim-blogs (= 0.22.0.rc1)
+      decidim-budgets (= 0.22.0.rc1)
+      decidim-comments (= 0.22.0.rc1)
+      decidim-core (= 0.22.0.rc1)
+      decidim-debates (= 0.22.0.rc1)
+      decidim-forms (= 0.22.0.rc1)
+      decidim-generators (= 0.22.0.rc1)
+      decidim-meetings (= 0.22.0.rc1)
+      decidim-pages (= 0.22.0.rc1)
+      decidim-participatory_processes (= 0.22.0.rc1)
+      decidim-proposals (= 0.22.0.rc1)
+      decidim-sortitions (= 0.22.0.rc1)
+      decidim-surveys (= 0.22.0.rc1)
+      decidim-system (= 0.22.0.rc1)
+      decidim-verifications (= 0.22.0.rc1)
     decidim-accountability (0.22.0.rc1)
       decidim-comments (= 0.22.0.rc1)
       decidim-core (= 0.22.0.rc1)
@@ -133,6 +153,17 @@ GIT
       decidim-core (= 0.22.0.rc1)
     decidim-generators (0.22.0.rc1)
       decidim-core (= 0.22.0.rc1)
+    decidim-initiatives (0.22.0.rc1)
+      decidim-admin (= 0.22.0.rc1)
+      decidim-comments (= 0.22.0.rc1)
+      decidim-core (= 0.22.0.rc1)
+      decidim-verifications (= 0.22.0.rc1)
+      kaminari (~> 1.2, >= 1.2.1)
+      origami (~> 2.1)
+      virtus-multiparams (~> 0.1)
+      wicked (~> 1.3)
+      wicked_pdf (~> 1.4)
+      wkhtmltopdf-binary (~> 0.12)
     decidim-meetings (0.22.0.rc1)
       cells-erb (~> 0.1.0)
       cells-rails (~> 0.0.9)
@@ -176,43 +207,6 @@ GIT
       sassc-rails (~> 2.1.2)
     decidim-verifications (0.22.0.rc1)
       decidim-core (= 0.22.0.rc1)
-
-GIT
-  remote: https://github.com/decidim/decidim
-  revision: 40468ca9ca41dd4fda3fa8f32d0db60e68122ed8
-  branch: release/0.22-stable
-  specs:
-    decidim (0.22.0.rc1)
-      decidim-accountability (= 0.22.0.rc1)
-      decidim-admin (= 0.22.0.rc1)
-      decidim-api (= 0.22.0.rc1)
-      decidim-assemblies (= 0.22.0.rc1)
-      decidim-blogs (= 0.22.0.rc1)
-      decidim-budgets (= 0.22.0.rc1)
-      decidim-comments (= 0.22.0.rc1)
-      decidim-core (= 0.22.0.rc1)
-      decidim-debates (= 0.22.0.rc1)
-      decidim-forms (= 0.22.0.rc1)
-      decidim-generators (= 0.22.0.rc1)
-      decidim-meetings (= 0.22.0.rc1)
-      decidim-pages (= 0.22.0.rc1)
-      decidim-participatory_processes (= 0.22.0.rc1)
-      decidim-proposals (= 0.22.0.rc1)
-      decidim-sortitions (= 0.22.0.rc1)
-      decidim-surveys (= 0.22.0.rc1)
-      decidim-system (= 0.22.0.rc1)
-      decidim-verifications (= 0.22.0.rc1)
-    decidim-initiatives (0.22.0.rc1)
-      decidim-admin (= 0.22.0.rc1)
-      decidim-comments (= 0.22.0.rc1)
-      decidim-core (= 0.22.0.rc1)
-      decidim-verifications (= 0.22.0.rc1)
-      kaminari (~> 1.2, >= 1.2.1)
-      origami (~> 2.1)
-      virtus-multiparams (~> 0.1)
-      wicked (~> 1.3)
-      wicked_pdf (~> 1.4)
-      wkhtmltopdf-binary (~> 0.12)
 
 PATH
   remote: .
