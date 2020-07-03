@@ -351,6 +351,7 @@ GEM
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
+    deepl-rb (2.2.2)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.2)
@@ -783,6 +784,7 @@ DEPENDENCIES
   decidim-dev!
   decidim-initiatives!
   decidim-initiatives_no_signature_allowed!
+  deepl-rb
   faker (~> 1.9)
   letter_opener_web (~> 1.4)
   listen (~> 3.1)

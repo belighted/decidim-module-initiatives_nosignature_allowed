@@ -10,6 +10,7 @@ gem "decidim-initiatives_no_signature_allowed", path: "."
 
 gem "puma", ">= 4.3.3"
 gem "uglifier", "~> 4.1"
+gem "deepl-rb"
 
 gem "bootsnap"
 
