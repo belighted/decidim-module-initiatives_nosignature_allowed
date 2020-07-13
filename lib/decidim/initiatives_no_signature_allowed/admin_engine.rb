@@ -9,6 +9,12 @@ module Decidim
       paths["db/migrate"] = nil
       paths["lib/tasks"] = nil
 
+      initializer "decidim_initiatives_no_signature_allowed extends" do |app|
+        Dir.glob("#{Decidim::InitiativesNoSignatureAllowed::Engine.root}/lib/extends/initiatives_no_signature_allowed/**/*.rb").each do |override|
+          require_dependency override
+        end
+      end
+
       routes do
         # Add admin engine routes here
         # resources :initiatives_no_signature_allowed do

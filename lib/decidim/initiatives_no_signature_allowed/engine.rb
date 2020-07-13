@@ -17,6 +17,12 @@ module Decidim
         # root to: "initiatives_no_signature_allowed#index"
       end
 
+      initializer "decidim_initiatives_no_signature_allowed extends" do |app|
+        Dir.glob("#{Decidim::InitiativesNoSignatureAllowed::Engine.root}/lib/extends/initiatives_no_signature_allowed/**/*.rb").each do |override|
+          require_dependency override
+        end
+      end
+
       initializer "decidim_initiatives_no_signature_allowed.assets" do |app|
         app.config.assets.precompile += %w(decidim_initiatives_no_signature_allowed_manifest.js decidim_initiatives_no_signature_allowed_manifest.css)
       end
