@@ -9,6 +9,9 @@ en:
         initiatives:
           no_signature_allowed: No signature allowed
   decidim:
+    components:
+      initiatives_no_signature_allowed:
+        name: Initiatives no signature allowed
     admin:
       actions:
         configure: Configure
