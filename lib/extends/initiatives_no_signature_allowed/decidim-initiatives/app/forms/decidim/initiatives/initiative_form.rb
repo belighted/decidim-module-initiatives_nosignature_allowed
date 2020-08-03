@@ -15,7 +15,7 @@ module InitiativesNoSignatureAllowed
         return true if no_signature.blank?
 
         # errors.add(:no_signature, I18n.t("activemodel.errors.models.initiatives.no_signature_allowed")) unless type.no_signature_allowed?
-        errors.add(:no_signature, I18n.t("activemodel.errors.models.initiatives.no_signature_allowed")) unless form.context.initiative_type.no_signature_allowed?
+        errors.add(:no_signature, I18n.t("activemodel.errors.models.initiatives.no_signature_allowed")) unless context.initiative_type.no_signature_allowed?
       end
 
     end
