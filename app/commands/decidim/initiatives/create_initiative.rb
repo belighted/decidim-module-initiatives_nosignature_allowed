@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: Move to lib/extends
+
 module Decidim
   module Initiatives
     # A command with all the business logic that creates a new initiative.
@@ -69,6 +71,7 @@ module Decidim
           author: current_user,
           decidim_user_group_id: form.decidim_user_group_id,
           scoped_type: scoped_type,
+          area: area,
           signature_type: form.signature_type,
           signature_end_date: signature_end_date,
           state: "created",
@@ -87,6 +90,12 @@ module Decidim
         return nil unless form.context.initiative_type.custom_signature_end_date_enabled?
 
         form.signature_end_date
+      end
+
+      def area
+        return nil unless form.context.initiative_type.area_enabled?
+
+        form.area
       end
 
       def create_components_for(initiative)
