@@ -46,7 +46,13 @@ $ bunde exec rails decidim_initiatives_no_signature_allowed:install:migrations
 $ RAILS_ENV=test bundle exec rails db:migrate
 ```
 
-Apply changes to decidim_dummy_app and provide configuration mentioned in [How to](#how-to-install) section.
+This extension includes some system specs. They require setup for chrome driver, which can be done in following steps:
+
+* change path to `spec/decidim_dummy_app`
+
+* install chrome driver via webdrivers `$ bundle exec rails webdrivers:chromedriver:update`
+
+* go back to the extension root path and run the specs
 
 Run tests:
 

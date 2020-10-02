@@ -16,6 +16,7 @@ gem "bootsnap"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim-dev", git: "https://github.com/decidim/decidim", branch: "release/0.22-stable"
+  gem "webdrivers"
 end
 
 group :development do
