@@ -75,13 +75,13 @@ describe "Initiative", type: :system do
         end
 
         it "Has a hidden field with the selected initiative type" do
-          expect(page).to have_xpath("//input[@id='initiative_type_id']", visible: false)
+          expect(page).to have_xpath("//input[@id='initiative_type_id']", visible: :hidden)
           expect(find(:xpath, "//input[@id='initiative_type_id']", visible: false).value).to eq(initiative_type.id.to_s)
         end
 
         it "Have fields for title and description" do
           expect(page).to have_xpath("//input[@id='initiative_title']")
-          expect(page).to have_xpath("//input[@id='initiative_description']", visible: false)
+          expect(page).to have_xpath("//input[@id='initiative_description']", visible: :hidden)
         end
 
         it "Offers contextual help" do

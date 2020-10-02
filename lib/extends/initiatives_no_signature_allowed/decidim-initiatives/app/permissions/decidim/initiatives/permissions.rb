@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "active_support/concern"
 
 module InitiativesNoSignatureAllowed
@@ -6,7 +7,6 @@ module InitiativesNoSignatureAllowed
     extend ActiveSupport::Concern
 
     included do
-
       private
 
       def can_vote?
@@ -17,7 +17,6 @@ module InitiativesNoSignatureAllowed
           initiative.votes.where(author: user).empty? &&
           authorized?(:vote, resource: initiative, permissions_holder: initiative.type)
       end
-
     end
   end
 

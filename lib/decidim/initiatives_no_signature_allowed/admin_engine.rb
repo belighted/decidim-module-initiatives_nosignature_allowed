@@ -9,7 +9,7 @@ module Decidim
       paths["db/migrate"] = nil
       paths["lib/tasks"] = nil
 
-      initializer "decidim_initiatives_no_signature_allowed extends" do |app|
+      initializer "decidim_initiatives_no_signature_allowed extends" do
         Dir.glob("#{Decidim::InitiativesNoSignatureAllowed::Engine.root}/lib/extends/initiatives_no_signature_allowed/**/*.rb").each do |override|
           require_dependency override
         end

@@ -24,7 +24,7 @@ describe "Admin manages initiatives", type: :system do
   let(:model_name) { Decidim::Initiative.model_name }
 
   STATES.each do |state|
-    let!("#{state}_initiative") { create_initiative_with_trait(state) }
+    let!(:"#{state}_initiative") { create_initiative_with_trait(state) }
   end
 
   before do
