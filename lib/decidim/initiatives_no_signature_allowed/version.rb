@@ -4,7 +4,7 @@ module Decidim
   # This holds the decidim-meetings version.
   module InitiativesNoSignatureAllowed
     def self.version
-      "0.22.0.rc1"
+      '0.22.0'
     end
   end
 end

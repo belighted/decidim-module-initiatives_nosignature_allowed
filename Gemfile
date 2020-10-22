@@ -4,8 +4,10 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "decidim", git: "https://github.com/decidim/decidim", branch: "release/0.22-stable"
-gem "decidim-initiatives", git: "https://github.com/decidim/decidim", branch: "release/0.22-stable"
+DECIDIM_VERSION = '0.22.0' #{ git: 'https://github.com/decidim/decidim', branch: 'release/0.22-stable' }
+
+gem "decidim", DECIDIM_VERSION
+gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-initiatives_no_signature_allowed", path: "."
 
 gem "puma", ">= 4.3.3"
@@ -15,7 +17,7 @@ gem "bootsnap"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-  gem "decidim-dev", git: "https://github.com/decidim/decidim", branch: "release/0.22-stable"
+  gem "decidim-dev", DECIDIM_VERSION
   gem "webdrivers"
 end
 
