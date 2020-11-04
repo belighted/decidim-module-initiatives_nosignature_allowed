@@ -2,6 +2,8 @@
 
 require "decidim/core/test/factories"
 require "decidim/initiatives/test/factories"
+require "decidim/faker/localized"
+require "decidim/dev"
 
 FactoryBot.modify do
   factory :initiatives_type, class: "Decidim::InitiativesType" do
@@ -10,10 +12,20 @@ FactoryBot.modify do
     banner_image { Decidim::Dev.test_file("city2.jpeg", "image/jpeg") }
     organization
     signature_type { :online }
+    attachments_enabled { true }
     undo_online_signatures_enabled { true }
     custom_signature_end_date_enabled { false }
+    area_enabled { false }
     promoting_committee_enabled { true }
     minimum_committee_members { 3 }
+
+    trait :attachments_enabled do
+      attachments_enabled { true }
+    end
+
+    trait :attachments_disabled do
+      attachments_enabled { false }
+    end
 
     trait :no_signature_allowed do
       no_signature_allowed { true }
@@ -43,6 +55,14 @@ FactoryBot.modify do
       custom_signature_end_date_enabled { false }
     end
 
+    trait :area_enabled do
+      area_enabled { true }
+    end
+
+    trait :area_disabled do
+      area_enabled { false }
+    end
+
     trait :promoting_committee_enabled do
       promoting_committee_enabled { true }
     end
@@ -59,6 +79,20 @@ FactoryBot.modify do
 
     trait :with_sms_code_validation do
       validate_sms_code_on_votes { true }
+    end
+  end
+
+  factory :initiatives_type_scope, class: "Decidim::InitiativesTypeScope" do
+    type { create(:initiatives_type) }
+    scope { create(:scope, organization: type.organization) }
+    supports_required { 1000 }
+
+    trait :with_user_extra_fields_collection do
+      type { create(:initiatives_type, :with_user_extra_fields_collection) }
+    end
+
+    trait :no_signature_allowed do
+      type { create(:initiatives_type, :no_signature_allowed) }
     end
   end
 
@@ -79,7 +113,9 @@ FactoryBot.modify do
     end
 
     after(:create) do |initiative|
-      create(:authorization, user: initiative.author, granted_at: Time.now.utc) unless Decidim::Authorization.where(user: initiative.author).where.not(granted_at: nil).any?
+      if initiative.author.is_a?(Decidim::User) && Decidim::Authorization.where(user: initiative.author).where.not(granted_at: nil).none?
+        create(:authorization, user: initiative.author, granted_at: Time.now.utc)
+      end
       create_list(:initiatives_committee_member, 3, initiative: initiative)
     end
 
@@ -154,6 +190,38 @@ FactoryBot.modify do
         create(:initiatives_type_scope,
                type: create(:initiatives_type, :with_user_extra_fields_collection, organization: organization))
       end
+    end
+  end
+
+  factory :initiative_user_vote, class: "Decidim::InitiativesVote" do
+    initiative { create(:initiative) }
+    author { create(:user, :confirmed, organization: initiative.organization) }
+  end
+
+  factory :organization_user_vote, class: "Decidim::InitiativesVote" do
+    initiative { create(:initiative) }
+    author { create(:user, :confirmed, organization: initiative.organization) }
+    decidim_user_group_id { create(:user_group).id }
+    after(:create) do |support|
+      create(:user_group_membership, user: support.author, user_group: Decidim::UserGroup.find(support.decidim_user_group_id))
+    end
+  end
+
+  factory :initiatives_committee_member, class: "Decidim::InitiativesCommitteeMember" do
+    initiative { create(:initiative) }
+    user { create(:user, :confirmed, organization: initiative.organization) }
+    state { "accepted" }
+
+    trait :accepted do
+      state { "accepted" }
+    end
+
+    trait :requested do
+      state { "requested" }
+    end
+
+    trait :rejected do
+      state { "rejected" }
     end
   end
 end

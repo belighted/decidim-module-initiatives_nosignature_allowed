@@ -23,12 +23,6 @@ module InitiativesNoSignatureAllowed
         )
       end
 
-      def scoped_type
-        ::Decidim::InitiativesTypeScope.find_by(
-          type: form.initiative_type,
-          scope: form.scope # same as: `scope: form.scope_id`
-        )
-      end
     end
   end
 

@@ -16,6 +16,7 @@ gem "uglifier", "~> 4.1"
 gem "bootsnap"
 
 group :development, :test do
+  gem 'pry'
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim-dev", DECIDIM_VERSION
   gem "webdrivers"
