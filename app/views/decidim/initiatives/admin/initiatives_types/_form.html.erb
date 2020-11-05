@@ -45,14 +45,6 @@
     </div>
 
     <div class="row column">
-      <%= form.check_box :child_scope_threshold_enabled %>
-    </div>
-
-    <div class="row column">
-      <%= form.check_box :only_global_scope_enabled %>
-    </div>
-
-    <div class="row column">
       <%= form.check_box :custom_signature_end_date_enabled %>
     </div>
 
@@ -66,10 +58,6 @@
       <div class="row column minimum-committee-members-details">
         <%= form.number_field :minimum_committee_members, min: 0, step: 1 %>
       </div>
-    </div>
-
-    <div class="row column">
-      <%= form.check_box :comments_enabled %>
     </div>
 
     <div class="row column">

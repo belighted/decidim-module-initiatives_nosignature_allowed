@@ -12,8 +12,8 @@ module Decidim
         let(:initiatives_type) { create(:initiatives_type, organization: organization) }
         let(:scope) { create(:initiatives_type_scope, type: initiatives_type) }
         let(:other_scope) { create(:initiatives_type_scope, type: initiatives_type) }
-
         let(:state) { "published" }
+        let(:attachment_params) { nil }
 
         let(:initiative) { create(:initiative, organization: organization, state: state, scoped_type: scope) }
         let(:user) { create(:user, organization: organization) }
@@ -39,6 +39,7 @@ module Decidim
             description: Decidim::Faker::Localized.sentence(5),
             state: "created",
             signature_type: "online",
+            attachment: attachment_params,
             no_signature: no_signature
           }
         end

@@ -37,16 +37,15 @@ module Decidim
           described_class.new(form, author)
         end
 
-        let(:initiative_type) { create(:initiatives_type, :no_signature_allowed, organization: organization) }
-        let(:scoped_type) { create(:initiatives_type_scope, type: initiative_type) }
-        let(:organization) { create(:organization) }
+        let(:scoped_type) { create(:initiatives_type_scope, :no_signature_allowed) }
+        let(:organization) { scoped_type.type.organization }
         let(:author) { create(:user, organization: organization) }
         let(:form) do
           form_klass
             .from_params(form_params)
             .with_context(
               current_organization: organization,
-              initiative_type: initiative_type
+              initiative_type: scoped_type.type
             )
         end
         let(:form_params) do
