@@ -3,7 +3,7 @@
 SimpleCov.start do
   root ENV["ENGINE_ROOT"]
 
-  add_filter "lib/decidim/term_customizer/version.rb"
+  add_filter "lib/decidim/initiatives_no_signature_allowed/version.rb"
   add_filter "/spec"
 
   add_group "Controllers", "app/controllers"

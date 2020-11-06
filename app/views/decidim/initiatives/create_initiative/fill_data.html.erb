@@ -1,6 +1,6 @@
 <% content_for :back_link do %>
   <%= link_to :back do %>
-    <%= icon "chevron-left", class: "icon--small" %>
+    <%= icon "chevron-left", class: "icon--small", role: "img", "aria-hidden": true %>
     <%= t(".back") %>
   <% end %>
 <% end %>
@@ -9,6 +9,7 @@
   <div class="medium-centered">
     <div class="callout secondary">
       <%== t ".fill_data_help" %>
+      <%= link_to t(".more_information"), decidim.page_path("initiatives"), target: "_blank" %>.
     </div>
   </div>
 </div>
@@ -17,7 +18,8 @@
   <div class="medium-centered">
     <div class="card">
       <div class="card__content">
-        <%= decidim_form_for(@form, url: next_wizard_path, method: :put, html: {class: "form new_initiative_form"}) do |f| %>
+        <%= decidim_form_for(@form, url: next_wizard_path, method: :put, html: { class: "form new_initiative_form" }) do |f| %>
+          <%= form_required_explanation %>
           <%= f.hidden_field :type_id %>
           <div class=section>
             <% unless single_initiative_type? %>
@@ -63,6 +65,12 @@
             <% if initiative_type.custom_signature_end_date_enabled? %>
               <div class="field signature-end-date">
                 <%= f.date_field :signature_end_date %>
+              </div>
+            <% end %>
+
+            <% if initiative_type.area_enabled? %>
+              <div class="field">
+                <%= f.areas_select :area_id, areas_for_select(current_organization), prompt: t(".select_area") %>
               </div>
             <% end %>
 

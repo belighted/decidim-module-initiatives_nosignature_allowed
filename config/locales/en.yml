@@ -98,6 +98,8 @@ en:
           more_information: "(More information)"
           select_scope: Select a scope
       initiatives:
+        edit:
+          attachment_legend: Attachment legend
         progress_bar:
           no_signature_explanation: No signature explanation
         vote_cabin:
