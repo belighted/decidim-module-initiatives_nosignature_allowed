@@ -40,7 +40,7 @@ As a organization admin you can enable a new workflow for initiative scope in th
 Create a dummy app in the `spec` dir:
 
 ```bash
-$ DATABASE_USERNAME=postgres DATABASE_PASSWORD=password1 rails decidim:generate_external_test_app
+$ DATABASE_USERNAME=<username> DATABASE_PASSWORD=<password>  bundle exec rails decidim:generate_external_test_app
 $ cd spec/decidim_dummy_app
 $ bundle exec rails decidim_initiatives_no_signature_allowed:install:migrations
 $ RAILS_ENV=test bundle exec rails db:migrate
