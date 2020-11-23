@@ -6,8 +6,8 @@ require "decidim/initiatives_no_signature_allowed/version"
 
 Gem::Specification.new do |s|
   s.version = Decidim::InitiativesNoSignatureAllowed.version
-  s.authors = ["Armand Fardeau"]
-  s.email = ["fardeauarmand@gmail.com"]
+  s.authors = ["Belighted"]
+  s.email = ["info@belighted.com"]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/decidim/decidim-module-initiatives_no_signature_allowed"
   s.required_ruby_version = ">= 2.5"
