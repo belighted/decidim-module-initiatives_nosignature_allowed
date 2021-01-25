@@ -20,5 +20,5 @@ module InitiativesNoSignatureAllowed
     end
   end
 
-  Decidim::Initiatives::Permissions.send(:include, PermissionsExtend)
+  ::Decidim::Initiatives::Permissions.send(:include, PermissionsExtend)
 end
