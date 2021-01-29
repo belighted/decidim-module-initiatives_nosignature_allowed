@@ -110,6 +110,10 @@ en:
         votes_count:
           most_popular_initiative: Most popular initiative
           need_more_votes: Need more signatures
+    system:
+      organizations:
+        initiatives_settings:
+          fieldset_title: Initiatives settings
   layouts:
     decidim:
       initiatives:

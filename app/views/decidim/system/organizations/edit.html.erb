@@ -18,11 +18,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :users_create_initiatives_mode %>
-    <%= f.check_box :allow_users_to_see_initiatives_no_signature_option %>
-  </div>
-
-  <div class="field">
     <%= f.label :users_registration_mode %>
     <%= f.collection_radio_buttons :users_registration_mode,
                                    Decidim::Organization.users_registration_modes,
@@ -35,6 +30,7 @@
     <%= f.collection_check_boxes :available_authorizations, Decidim.authorization_workflows, :name, :description %>
   </div>
 
+  <%= render partial: "initiatives_settings", locals: { f: f } %>
   <%= render partial: "smtp_settings", locals: { f: f } %>
   <%= render partial: "omniauth_settings", locals: { f: f } %>
 

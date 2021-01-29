@@ -10,7 +10,8 @@ module InitiativesNoSignatureAllowed
 
       def no_signature_allowed_visible_for?(user)
         return true if user.admin?
-        return organization.allow_users_to_see_initiatives_no_signature_option
+        return true if organization&.initiatives_settings.blank?
+        return organization.initiatives_settings["allow_users_to_see_initiative_no_signature_option"]
       end
 
     end
