@@ -4,16 +4,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = '0.22.0' #{ git: 'https://github.com/decidim/decidim', branch: 'release/0.22-stable' }
+DECIDIM_VERSION = '0.24.2'
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-initiatives_no_signature_allowed", path: "."
 
-gem "puma", ">= 4.3.3"
+gem "bootsnap", "~> 1.4"
+gem "puma", "< 6"
 gem "uglifier", "~> 4.1"
-
-gem "bootsnap"
 
 group :development, :test do
   gem 'pry'
@@ -23,7 +22,7 @@ group :development, :test do
 end
 
 group :development do
-  gem "faker", "~> 1.9"
+  gem "faker", "~> 2.14"
   gem "letter_opener_web", "~> 1.4"
   gem "listen", "~> 3.1"
   gem "spring", "~> 2.0"

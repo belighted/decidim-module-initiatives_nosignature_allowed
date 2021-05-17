@@ -14,14 +14,15 @@ module InitiativesNoSignatureAllowed
 
       def map_model(model)
         self.secondary_hosts = model.secondary_hosts.join("\n")
-        self.omniauth_settings = Hash[(model.omniauth_settings || []).map do |k, v|
-          [k, Decidim::OmniauthProvider.value_defined?(v) ? Decidim::AttributeEncryptor.decrypt(v) : v]
-        end]
+        self.omniauth_settings = (model.omniauth_settings || {}).transform_values do |v|
+          Decidim::OmniauthProvider.value_defined?(v) ? Decidim::AttributeEncryptor.decrypt(v) : v
+        end
         if model.initiatives_settings.blank?
           self.initiatives_settings = {
             allow_users_to_see_initiative_no_signature_option: true # default is `true`
           }
         end
+        self.file_upload_settings = FileUploadSettingsForm.from_model(model.file_upload_settings)
       end
 
     end

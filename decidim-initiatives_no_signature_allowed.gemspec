@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = ["info@belighted.com"]
   s.license = "AGPL-3.0"
   s.homepage = "https://github.com/decidim/decidim-module-initiatives_no_signature_allowed"
-  s.required_ruby_version = ">= 2.5"
+  s.required_ruby_version = ">= 2.7.1"
 
   s.name = "decidim-initiatives_no_signature_allowed"
   s.summary = "A decidim initiatives_no_signature_allowed module"
@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency "decidim-core", Decidim::InitiativesNoSignatureAllowed.version
   s.add_dependency "decidim-initiatives", Decidim::InitiativesNoSignatureAllowed.version
+  s.add_dependency "decidim-system", Decidim::InitiativesNoSignatureAllowed.version
 end

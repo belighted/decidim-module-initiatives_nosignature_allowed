@@ -19,6 +19,7 @@ module InitiativesNoSignatureAllowed
         organization.users_registration_mode = form.users_registration_mode
         organization.omniauth_settings = form.encrypted_omniauth_settings
         organization.smtp_settings = form.encrypted_smtp_settings
+        organization.file_upload_settings = form.file_upload_settings.final
 
         organization.initiatives_settings = form.initiatives_settings
 
