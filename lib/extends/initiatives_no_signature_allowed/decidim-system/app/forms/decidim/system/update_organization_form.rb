@@ -22,7 +22,7 @@ module InitiativesNoSignatureAllowed
             allow_users_to_see_initiative_no_signature_option: true # default is `true`
           }
         end
-        self.file_upload_settings = FileUploadSettingsForm.from_model(model.file_upload_settings)
+        self.file_upload_settings = Decidim::System::FileUploadSettingsForm.from_model(model.file_upload_settings)
       end
 
     end
